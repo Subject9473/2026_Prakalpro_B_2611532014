@@ -2,7 +2,7 @@
 #buat program untuk operator aritmatika dalam python
 #nama variabel ditambah 4 digit nim terakhir contoh : angka1_2014
 #program ini menggunakan fungsi input()
-#
+#nilai yang dimasukkan akan dikonversi menjadi tipe data integer
 
 angka1_2014 = int(input("Input angka-1: "))
 angka2_2014 = int(input("Input angka-2: "))
@@ -36,7 +36,7 @@ if angka2_2014 != 0:
     print("\nOperator Sisa Pembagian")
     print("Hasil =", hasil)
 else:
-    print("Angka kedua tidak bleh bernilai 0.")
+    print("Angka kedua tidak boleh bernilai 0.")
 
 # Pangkat
 hasil = angka1_2014 ** angka2_2014
