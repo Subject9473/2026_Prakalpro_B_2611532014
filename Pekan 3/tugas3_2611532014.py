@@ -1,26 +1,39 @@
-# PROGRAM KASIR SEDERHANA
-# 1. DATA PELANGGAN DAN TRANSAKSI
+# SIMULASI TRANSAKSI DAN VALIDASI AKSES TOKO
+print("=== SISTEM TRANSAKSI TOKO ===")
 
+# INPUT DATA
 nama_2014 = input("Masukkan Nama Pelanggan : ")
 status_2014 = input("Masukkan Status Pelanggan (member/nonmember) : ").lower()
-total_belanja_2014 = float(input("Masukkan Total Belanja : "))
+total_belanja_2014 = int(input("Masukkan Total Belanja : "))
 jumlah_barang_2014 = int(input("Masukkan Jumlah Barang : "))
 kode_promo_2014 = input("Masukkan Kode Promo : ").upper()
 
-# 2. DAFTAR KODE PROMO
+# DAFTAR PROMO
+promo_2014 = ["HEMAT10", "HEMAT20", "MAHASISWAFTI"]
 
-promo_2014 = ["HEMAT10", "HEMAT20", "GRATISONGKIR"]
-
-# 3. OPERATOR PERBANDINGAN
-
+# OPERATOR PERBANDINGAN
 syarat_belanja_2014 = total_belanja_2014 >= 200000
 syarat_barang_2014 = jumlah_barang_2014 >= 3
+status_member_2014 = status_2014 == "member"
+
+# OPERATOR KEANGGOTAAN
 promo_tersedia_2014 = kode_promo_2014 in promo_2014
+promo_tidak_tersedia_2014 = kode_promo_2014 not in promo_2014
 
-# 4. MENENTUKAN BESAR DISKON
+# OPERATOR LOGIKA
+diskon_member_2014 = status_member_2014 and syarat_belanja_2014
+promo_kelayakan_2014 = (
+    syarat_belanja_2014
+    and syarat_barang_2014
+    and promo_tersedia_2014
+)
+akses_pelanggan_2014 = status_member_2014 or promo_tersedia_2014
+tidak_memenuhi_promo_2014 = not promo_tersedia_2014
 
+# OPERATOR ARITMATIKA
 diskon_2014 = 0
-if status_2014 == "member" and syarat_belanja_2014:
+
+if diskon_member_2014:
     diskon_2014 = total_belanja_2014 * 0.10
 elif syarat_belanja_2014:
     diskon_2014 = total_belanja_2014 * 0.05
@@ -28,50 +41,25 @@ total_pembayaran_2014 = total_belanja_2014 - diskon_2014
 
 harga_rata_2014 = total_belanja_2014 / jumlah_barang_2014
 
-sisa_pembagian_2014 = total_belanja_2014 % 1000
-
-
-# 6. OPERATOR PENUGASAN / AUGMENTED ASSIGNMENT
-
+# OPERATOR PENUGASAN
 poin_2014 = 0
 poin_2014 += jumlah_barang_2014
 
-if status_2014 == "member":
+if status_member_2014:
     poin_2014 += 10
 
-# Contoh augmented assignment lainnya
-total_pembayaran_2014 *= 1.00
+saldo_poin_2014 = poin_2014
 
+if promo_kelayakan_2014:
+    saldo_poin_2014 -= 1
 
-# 7. OPERATOR LOGIKA
+faktor_pembayaran_2014 = 1
+faktor_pembayaran_2014 *= 1
 
-diskon_member_2014 = (
-    status_2014 == "member" and
-    syarat_belanja_2014
-)
+nilai_per_item_2014 = total_belanja_2014
+nilai_per_item_2014 /= jumlah_barang_2014
 
-promo_kelayakan_2014 = (
-    syarat_belanja_2014 and
-    syarat_barang_2014 and
-    promo_tersedia_2014
-)
-
-akses_pelanggan_2014 = (
-    status_2014 == "member" or
-    promo_tersedia_2014
-)
-
-tidak_memenuhi_promo_2014 = not promo_tersedia_2014
-
-
-# 8. OPERATOR KEANGGOTAAN
-
-promo_tersedia_2014 = kode_promo_2014 in promo_2014
-promo_tidak_tersedia_2014 = kode_promo_2014 not in promo_2014
-
-
-# 9. OPERATOR IDENTITAS
-
+# OPERATOR IDENTITAS
 objek_a_2014 = ["member"]
 objek_b_2014 = ["member"]
 
@@ -79,18 +67,15 @@ identitas_sama_2014 = objek_a_2014 is objek_b_2014
 identitas_berbeda_2014 = objek_a_2014 is not objek_b_2014
 nilai_sama_2014 = objek_a_2014 == objek_b_2014
 
-
-# 10. OPERATOR BITWISE
-
-# Nilai bit:
-# 0001 = member
-# 0010 = belanja >= 200000
-# 0100 = jumlah barang >= 3
-# 1000 = promo tersedia
+# OPERATOR BITWISE
+# 0001 = Member
+# 0010 = Belanja >= Rp200.000
+# 0100 = Jumlah barang >= 3
+# 1000 = Promo tersedia
 
 kode_status_2014 = 0
 
-if status_2014 == "member":
+if status_member_2014:
     kode_status_2014 |= 1
 
 if syarat_belanja_2014:
@@ -102,116 +87,79 @@ if syarat_barang_2014:
 if promo_tersedia_2014:
     kode_status_2014 |= 8
 
-
-# AND (&) untuk memeriksa kondisi member
 cek_member_bit_2014 = kode_status_2014 & 1
-
-# OR (|) untuk menggabungkan kondisi
+cek_promo_bit_2014 = kode_status_2014 & 8
 gabungan_bit_2014 = kode_status_2014 | 8
 
-# XOR (^) untuk membandingkan dua kode status
-kode_pembanding_2014 = 3
-perbedaan_bit_2014 = kode_status_2014 ^ kode_pembanding_2014
+kode_referensi_2014 = 11
+perbedaan_bit_2014 = kode_status_2014 ^ kode_referensi_2014
+hasil_shift_2014 = kode_status_2014 << 1
 
+# ==========================================================
+# OUTPUT
+# ==========================================================
 
-# 11. MENENTUKAN STATUS PROMO
-
-if promo_kelayakan_2014:
-    status_promo_2014 = "Mendapatkan promo"
-else:
-    status_promo_2014 = "Tidak mendapatkan promo"
-
-
-# 12. MENENTUKAN HAK AKSES PELANGGAN
-
-if status_2014 == "member" and promo_tersedia_2014:
-    hak_akses_2014 = "Memiliki hak akses promo member"
-elif promo_tersedia_2014:
-    hak_akses_2014 = "Memiliki hak akses promo umum"
-else:
-    hak_akses_2014 = "Tidak memiliki hak akses promo"
-
-
-# ==========================================
-# HASIL PROGRAM
-# ==========================================
-
-print("\n==========================================")
-print("           DATA PELANGGAN")
-print("==========================================")
-
-print("Nama Pelanggan :", nama_2014)
+print("\n=== DATA PELANGGAN ===")
+print("Nama Pelanggan   :", nama_2014)
 print("Status Pelanggan :", status_2014)
-print("Total Belanja :", total_belanja_2014)
-print("Jumlah Barang :", jumlah_barang_2014)
-print("Kode Promo :", kode_promo_2014)
+print("Total Belanja    : Rp", total_belanja_2014)
+print("Jumlah Barang    :", jumlah_barang_2014)
+print("Kode Promo       :", kode_promo_2014)
 
+print("\n=== HASIL VALIDASI ===")
+print("Belanja >= 200000       :", syarat_belanja_2014)
+print("Jumlah Barang >= 3      :", syarat_barang_2014)
+print("Status Member            :", status_member_2014)
+print("Kode Promo Tersedia      :", promo_tersedia_2014)
+print("Mendapatkan Diskon       :", diskon_member_2014)
+print("Mendapatkan Promo        :", promo_kelayakan_2014)
 
-print("\n==========================================")
-print("          HASIL PERHITUNGAN")
-print("==========================================")
+print("\n=== HASIL PERHITUNGAN ===")
+print("Diskon           : Rp", diskon_2014)
+print("Total Pembayaran : Rp", total_pembayaran_2014)
+print("Rata-rata Barang  : Rp", harga_rata_2014)
 
-print("Besarnya Diskon :", diskon_2014)
-print("Total Pembayaran :", total_pembayaran_2014)
-print("Harga Rata-rata Barang :", harga_rata_2014)
-print("Sisa Pembagian :", sisa_pembagian_2014)
-print("Poin Pelanggan :", poin_2014)
+print("\n=== HAK AKSES PELANGGAN ===")
+print("Kode Hak Akses           :", kode_status_2014)
+print("Member Access            :", status_member_2014)
+print("Promo Access             :", promo_kelayakan_2014)
+print("Free Shipping Access     :", promo_tersedia_2014)
 
+print("\n=== HASIL OPERATOR ===")
 
-print("\n==========================================")
-print("           HASIL VALIDASI")
-print("==========================================")
+print("\nOperator Perbandingan")
+print("Total >= 200000          :", syarat_belanja_2014)
+print("Jumlah Barang >= 3       :", syarat_barang_2014)
+print("Status == member         :", status_member_2014)
 
-print("Memenuhi minimum belanja? :", syarat_belanja_2014)
-print("Jumlah barang memenuhi syarat? :", syarat_barang_2014)
-print("Mendapatkan diskon member? :", diskon_member_2014)
-print("Kode promo tersedia? :", promo_tersedia_2014)
-print("Mendapatkan promo? :", status_promo_2014)
-print("Hak Akses :", hak_akses_2014)
+print("\nOperator Logika")
+print("Member AND Belanja       :", diskon_member_2014)
+print("Member OR Promo          :", akses_pelanggan_2014)
+print("NOT Promo                :", tidak_memenuhi_promo_2014)
 
+print("\nOperator Penugasan")
+print("Poin setelah +=          :", poin_2014)
+print("Poin setelah -=          :", saldo_poin_2014)
+print("Faktor setelah *=        :", faktor_pembayaran_2014)
+print("Nilai per item setelah /=:", nilai_per_item_2014)
 
-print("\n==========================================")
-print("            HASIL OPERATOR")
-print("==========================================")
+print("\nOperator Keanggotaan")
+print("Kode Promo IN daftar     :", promo_tersedia_2014)
+print("Kode Promo NOT IN daftar :", promo_tidak_tersedia_2014)
 
-# Operator aritmatika
-print("\n[Operator Aritmatika]")
-print("Diskon = Total Belanja x Persentase Diskon :", diskon_2014)
-print("Total Pembayaran = Total Belanja - Diskon :", total_pembayaran_2014)
-print("Rata-rata = Total Belanja / Jumlah Barang :", harga_rata_2014)
-print("Sisa Pembagian (%) :", sisa_pembagian_2014)
+print("\nOperator Identitas")
+print("objek_a IS objek_b       :", identitas_sama_2014)
+print("objek_a IS NOT objek_b   :", identitas_berbeda_2014)
+print("objek_a == objek_b       :", nilai_sama_2014)
 
-# Operator perbandingan
-print("\n[Operator Perbandingan]")
-print("Total Belanja >= 200000 :", syarat_belanja_2014)
-print("Jumlah Barang >= 3 :", syarat_barang_2014)
+print("\nOperator Bitwise")
+print("Kode Status Biner        :", format(kode_status_2014, "04b"))
+print("Kode Status Desimal      :", kode_status_2014)
+print("Cek Member (& 0001)      :", cek_member_bit_2014)
+print("Cek Promo (& 1000)       :", cek_promo_bit_2014)
+print("Hasil OR (| 1000)        :", gabungan_bit_2014)
+print("Hasil XOR (^ 1011)       :", perbedaan_bit_2014)
+print("Hasil Shift (<< 1)       :", hasil_shift_2014)
 
-# Operator logika
-print("\n[Operator Logika]")
-print("Member AND Belanja Minimum :", diskon_member_2014)
-print("Belanja AND Barang AND Promo :", promo_kelayakan_2014)
-print("Member OR Promo Tersedia :", akses_pelanggan_2014)
-print("NOT Promo Tersedia :", tidak_memenuhi_promo_2014)
+print("\n=== SELESAI ===")
 
-# Operator penugasan
-print("\n[Operator Penugasan]")
-print("Poin setelah += :", poin_2014)
-print("Total setelah *= :", total_pembayaran_2014)
-
-# Operator keanggotaan
-print("\n[Operator Keanggotaan]")
-print("Kode promo IN daftar :", promo_tersedia_2014)
-print("Kode promo NOT IN daftar :", promo_tidak_tersedia_2014)
-
-# Operator identitas
-print("\n[Operator Identitas]")
-print("objek_a IS objek_b :", identitas_sama_2014)
-print("objek_a IS NOT objek_b :", identitas_berbeda_2014)
-print("objek_a == objek_b :", nilai_sama_2014)
-
-# Operator bitwise
-print("\n[Operator Bitwise]")
-print("Kode Status :", kode_status_2014)
-print("AND (&) :", cek_member_bit_2014)
-print("OR (|) :", gabungan_bit_2014)
-print("XOR (^) :", perbedaan_bit_2014)
