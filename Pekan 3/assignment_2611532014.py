@@ -11,52 +11,52 @@ print("\nNilai awal angka1_2014 =", angka1_2014)
 print("Nilai angka2_2014 =", angka2_2014)
 
 # Assignment biasa
-hasil = angka1_2014
+hasil_2014 = angka1_2014
 print("\nAssignment biasa (=)")
-print("Hasil =", hasil)
+print("Hasil =", hasil_2014)
 
 # Assignment penambahan 
-hasil = angka1_2014
-hasil += angka2_2014
+hasil_2014 = angka1_2014
+hasil_2014 += angka2_2014
 print("\nAssignment penambahan (+=)")
-print("Hasil =", hasil)
+print("Hasil =", hasil_2014)
 
 # Assignment pengurangan
-hasil = angka1_2014
-hasil -= angka2_2014
+hasil_2014 = angka1_2014
+hasil_2014 -= angka2_2014
 print("\nAssignment pengurangan (-=)")
-print("Hasil =", hasil)
+print("Hasil =", hasil_2014)
 
 # Assignment perkalian
-hasil = angka1_2014
-hasil *= angka2_2014
+hasil_2014 = angka1_2014
+hasil_2014 *= angka2_2014
 print("\nAssignment perkalian (*=)")
-print("Hasil =", hasil)
+print("Hasil =", hasil_2014)
 
 # Assignment pembagian, pembagian bulat, dan sisa pembagian
 if angka2_2014 != 0:
-    hasil = angka1_2014
-    hasil /= angka2_2014
+    hasil_2014 = angka1_2014
+    hasil_2014 /= angka2_2014
     print("\nAssignment pembagian (/=)")
-    print("Hasil =", hasil)
+    print("Hasil =", hasil_2014)
     # Operator tambahan
-    hasil = angka1_2014
-    hasil //= angka2_2014
+    hasil_2014 = angka1_2014
+    hasil_2014 //= angka2_2014
     print("\nAssignment pembagian bulat (//=)")
-    print("Hasil =", hasil)
-    hasil = angka1_2014
-    hasil %= angka2_2014
+    print("Hasil =", hasil_2014)
+    hasil_2014 = angka1_2014
+    hasil_2014 %= angka2_2014
     print("\nAssignment sisa pembagian (%=)")
-    print("Hasil =", hasil)
+    print("Hasil =", hasil_2014)
 else:
     print("\nPembagian tidak dapat dilakukan.")
     print("Angka kedua tidak boleh bernilai 0.")
 
 # Operator tambahan: assignment perpangkatan
-hasil = angka1_2014
-hasil **= angka2_2014
+hasil_2014 = angka1_2014
+hasil_2014 **= angka2_2014
 print("\nAssignment perpangkatan (**=)")
-print("Hasil =", hasil)
+print("Hasil =", hasil_2014)
 
 
 
