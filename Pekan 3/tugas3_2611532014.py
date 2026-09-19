@@ -24,9 +24,6 @@ if status_2014 == "member" and syarat_belanja_2014:
     diskon_2014 = total_belanja_2014 * 0.10
 elif syarat_belanja_2014:
     diskon_2014 = total_belanja_2014 * 0.05
-
-# 5. OPERATOR ARITMATIKA
-
 total_pembayaran_2014 = total_belanja_2014 - diskon_2014
 
 harga_rata_2014 = total_belanja_2014 / jumlah_barang_2014
