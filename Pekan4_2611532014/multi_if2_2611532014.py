@@ -14,7 +14,7 @@ kode_promo_valid_2014 = input_promo_2014 in ["y", "ya"]
 total_diskon_persen_2014 = 0
 
 #mult if terpisah: setia kondisi dieriksa secara indeenden
-#diskon bisa di tumuk jika
+#diskon bisa di tumuk jika ya gitulah
 
 if total_belanja_2014 > 1000000:
     total_diskon_persen_2014 += 10 #diskon belanja besar

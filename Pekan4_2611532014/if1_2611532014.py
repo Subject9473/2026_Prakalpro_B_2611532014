@@ -1,4 +1,4 @@
-#
+#if
 
 ipk_2014 = float(input("Input IPK Anda = "))
 
