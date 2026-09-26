@@ -1,7 +1,7 @@
 #rogram match case
 #konversi nilai angka ke nama bulan
 
-bulan_2014 = int(input("maasukkan angka bulan (1 - 12): "))
+bulan_2014 = int(input("masukkan angka bulan (1 - 12): "))
 
 match bulan_2014:
     case 1:
